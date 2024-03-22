@@ -1,7 +1,7 @@
 import { PokemonActions } from "../redux/pokemons/actionTypes";
 import Api from "./axiosConfig";
 
-export async function fetchPokemon(dispatch) {
+export async function fetchPokemons(dispatch) {
     dispatch({
         type: PokemonActions.REQUEST,
         payload: true
