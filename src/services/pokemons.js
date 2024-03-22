@@ -1,33 +1,57 @@
-import { PokemonActions } from "../redux/pokemons/actionTypes";
+import { UserActions } from "../redux/user/actionTypes";
 import Api from "./axiosConfig";
+import { toast } from 'react-toastify';
 
-export async function fetchPokemons(dispatch) {
+export async function fetchPokemons(dispatch, offset, limit) {
     dispatch({
-        type: PokemonActions.REQUEST,
+        type: UserActions.LOADING,
         payload: true
     })
 
-    const response = await Api.get('/pokemon');
-
-    console.log(response);
-
     try {
-        if (response) {
+        const { data } = await Api.get(`/pokemon?offset=${offset}&limit=${limit}`);
+
+        if (data) {
             /**
              * Simulando um fetch um pouco mais demorado
              */
             setTimeout(() => {
-                dispatch({
-                    type: PokemonActions.SUCCESS,
-                    payload: response.data.results
-                })
+                return data.results
             }, 2000)
         }
     } catch (err) {
+        console.error(err.message);
+        toast.error(`Falha ao consultar API`);
+    } finally {
         dispatch({
-            type: PokemonActions.FAILURE,
-            payload: `Falha ao consultar API ${err.message}`
+            type: UserActions.LOADING,
+            payload: false
         })
     }
+}
 
+export async function fetchPokemonByName(dispatch, name) {
+    dispatch({
+        type: UserActions.REQUEST,
+        payload: true
+    })
+
+    const response = await Api.get(`/pokemon/${name}`);
+
+    try {
+        if (response) {
+            return response.data.results
+        }
+
+    } catch (err) {
+        dispatch({
+            type: UserActions.FAILURE,
+            payload: `Falha ao consultar API ${err.message}`
+        })
+    } finally {
+        dispatch({
+            type: UserActions.REQUEST,
+            payload: false
+        })
+    }
 }
