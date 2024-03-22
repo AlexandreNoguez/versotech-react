@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
-import { fetchPokemon } from '../services/pokemons';
+import { fetchPokemons } from '../services/pokemons';
 import Card from '../components/Card'
+import Loading from '../components/Loading'
 
 function PokemonList() {
     const { pokemons, loading, isNew } = useSelector(rootReducer => rootReducer.pokemonReducer);
@@ -10,21 +11,21 @@ function PokemonList() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchPokemon(dispatch);
+        fetchPokemons(dispatch);
+        // eslint-disable-next-line
     }, []);
 
     return (
         <div className='flex flex-col justify-center items-center px-4'>
             <h1 className='mb-4'>Pokemon List</h1>
             {loading ? (
-                <p>Carregando...</p>
+                <Loading />
             ) :
 
                 <ul className='flex flex-wrap justify-center text-center gap-4'>
                     {
                         pokemons ? (
                             <Card pokemons={pokemons} isNew={isNew} />
-
                         ) : null}
 
                 </ul>
