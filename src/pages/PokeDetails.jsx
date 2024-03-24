@@ -53,7 +53,7 @@ function PokeDetails() {
                         ))}
                     </div>
                     <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2">
-                        <p>estatísticas</p>
+                        <p>Estatísticas</p>
                         {pokemonDetails?.stats ?
                             <PokeCharts stats={stats} />
                             : null}
