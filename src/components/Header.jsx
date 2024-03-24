@@ -6,7 +6,6 @@ import { List, SignOut } from '@phosphor-icons/react';
 import Pokeball from '../assets/pokeball.png'
 import useWindowSize from '../hooks/SizeObserver';
 import MenuModal from './MenuModal';
-// import { showModal, hideModal } from "../redux/user/actions";
 import PokemonTrainerModal from './PokemonTrainerModal';
 import { logoutUser } from '../redux/user/actions';
 
@@ -31,12 +30,12 @@ function Header() {
     }
 
     return (
-        <header className='flex justify-between items-center p-4 bg-slate-800'>
+        <header className='flex justify-between items-center p-4 bg-slate-800 w-full'>
             <PokemonTrainerModal open={newTrainerModal} setOpen={setNewTrainerModal} />
 
             <div className='flex items-center gap-4'>
                 <img className='h-4 w-4' src={Pokeball} alt="Logo Pokeball" />
-                <h1 className='text-sm'>VersoTech - React dev</h1>
+                <h1 className='text-sm'>VersoTech {width > 480 ? "- React dev" : null}</h1>
             </div>
             <div>
                 {currentUser ? (
