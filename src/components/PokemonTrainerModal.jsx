@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
+
 import { loginUser } from '../redux/user/actions';
 // PokemonTrainerModal.Or
 
@@ -17,6 +19,9 @@ function PokemonTrainerModal({ open, setOpen }) {
 
     function signIn(event) {
         event.preventDefault();
+        if (!loggedUser) {
+            return toast.warning("O campo não pode estar em branco")
+        }
         dispatch(loginUser(loggedUser));
         setOpen(!open);
         setLoggedUser("");
