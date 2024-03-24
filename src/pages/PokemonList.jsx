@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { SkipBack, SkipForward } from '@phosphor-icons/react'
-// import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 
 import { fetchPokemonByName, fetchPokemons } from '../services/pokemons';
@@ -12,7 +11,7 @@ function PokemonList() {
     const [pokemons, setPokemons] = useState([]);
     const [userPokemonSeach, setUserPokemonSearch] = useState(null);
     const [offSet, setOffSet] = useState(0);
-    const limit = 10;
+    const limit = 12;
     const [search, setSearch] = useState("");
 
     async function fetchData() {
@@ -30,7 +29,7 @@ function PokemonList() {
     async function searchPokemon() {
         try {
             const pokemon = await fetchPokemonByName(search);
-            setUserPokemonSearch(pokemon);
+            setUserPokemonSearch(pokemon.data);
         } catch (error) {
             console.error(error);
         } finally {
@@ -41,7 +40,8 @@ function PokemonList() {
     useEffect(() => {
         setLoading(true);
         /**
-         * Simulando uma chamada na api um pouco mais demorada
+         * Simulando uma chamada na 
+         * api um pouco mais demorada
          */
         const timer = setTimeout(() => {
             fetchData(offSet, limit);
@@ -55,6 +55,11 @@ function PokemonList() {
 
     useEffect(() => {
         setLoading(true);
+        /**
+         * para evitar muitos renders enquanto 
+         * o usuário digita na busca por pokémons
+         * na variável search
+         */
         const timer = setTimeout(() => {
             searchPokemon()
         }, 1000);
