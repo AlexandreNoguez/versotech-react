@@ -48,11 +48,11 @@ function PokemonTrainerModal({ open, setOpen }) {
                             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                            <Dialog.Panel className="relative transform overflow-hidden mx-20 rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-[160px] p-8">
+                            <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8  p-8">
                                 <div className='flex flex-col gap-2 text-slate-800'>
                                     <h1>Olá! Você é um novo Treinador Pokémon?</h1>
                                     <p>Qual o seu nome?</p>
-                                    <form className='flex gap-4'>
+                                    <form className='flex flex-col gap-4'>
                                         <input className='bg-slate-500 px-4 py-2 rounded-lg'
                                             placeholder='Digite seu nome'
                                             type="text"
