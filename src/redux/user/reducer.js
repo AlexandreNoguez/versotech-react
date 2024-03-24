@@ -14,12 +14,13 @@ const userReducer = (state = initialState, action) => {
                 currentUser: action.payload
             }
         case UserActionsTypes.LOGOUT:
+            console.log(action);
             return {
                 ...state,
-                currentUser: null
+                currentUser: action.payload.currentUser,
+                knownPokemon: action.payload.knownPokemon
             }
         case UserActionsTypes.ADD_POKEMON:
-
             if (state.knownPokemon.some(pokemon => pokemon.id === action.payload.id)) {
                 toast.warning("Pokémon já está na tua pokédex")
                 return {
@@ -27,11 +28,16 @@ const userReducer = (state = initialState, action) => {
                 }
             }
 
+            if (state.currentUser === null) {
+                toast.warning("Você precisa estar logado para adicionar à pokedex!")
+                return {
+                    ...state
+                }
+            }
+
             return {
                 ...state,
-                knownPokemon: [
-                    ...state.knownPokemon,
-                    { ...action.payload }]
+                knownPokemon: [...state.knownPokemon, action.payload]
             }
         default:
             return state

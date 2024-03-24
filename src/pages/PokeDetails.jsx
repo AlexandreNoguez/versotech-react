@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux'
 
 import { fetchPokemonByName } from '../services/pokemons'
 import Loading from "../components/Loading";
 import PokeCharts from "../components/PokeCharts";
+import { addPokemon } from "../redux/user/actions";
 
 function PokeDetails() {
     const { name } = useParams();
     const [pokemonDetails, setPokemonDetails] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [stats, setStats] = useState();
+    const dispatch = useDispatch();
 
     async function getPokemon() {
         try {
@@ -23,6 +26,10 @@ function PokeDetails() {
 
     }
 
+    function handleAddPokemon() {
+        dispatch(addPokemon(pokemonDetails))
+    }
+
     useEffect(() => {
         getPokemon();
         // eslint-disable-next-line
@@ -34,7 +41,11 @@ function PokeDetails() {
             : (pokemonDetails ?
                 <div className="flex flex-col">
                     <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2">
-                        <h1>{name}</h1>
+                        <div className="flex text-center flex-col">
+                            <h1>{`${name.charAt(0).toUpperCase()}${name.substring(1)}`}</h1>
+                            <p>Já capturou esse pokémon?</p>
+                            <button onClick={handleAddPokemon}>Adicionar</button>
+                        </div>
                         <img src={pokemonDetails.sprites.front_default} alt="" />
                         <p>Nº {pokemonDetails.order}</p>
                         <div>
