@@ -26,7 +26,7 @@ function Header() {
     }, [currentUser]);
 
     function handleLogout() {
-        dispatch(logoutUser(null))
+        dispatch(logoutUser({ currentUser: null, knownPokemon: [] }))
     }
 
     return (
