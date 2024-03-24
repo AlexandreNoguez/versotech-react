@@ -14,7 +14,6 @@ const userReducer = (state = initialState, action) => {
                 currentUser: action.payload
             }
         case UserActionsTypes.LOGOUT:
-            console.log(action);
             return {
                 ...state,
                 currentUser: action.payload.currentUser,
