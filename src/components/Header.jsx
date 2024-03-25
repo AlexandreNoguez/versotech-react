@@ -45,7 +45,7 @@ function Header() {
                             <SignOut size={16} />
                         </button>
                     </div>
-                ) : null}
+                ) : <button onClick={() => setNewTrainerModal(true)} type='button'>Entrar</button>}
 
             </div>
             <div>
