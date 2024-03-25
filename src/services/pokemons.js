@@ -1,5 +1,7 @@
-import Api from "./axiosConfig";
 import { toast } from 'react-toastify';
+import Api from "./axiosConfig";
+
+import { fetchPokemonByType } from "../redux/pokemons/actions";
 
 export async function fetchPokemons(offset, limit) {
     try {
@@ -39,6 +41,19 @@ export async function fetchPokemonByName(pokemon) {
                 data: data,
                 stats: convertedArray
             }
+        }
+    } catch (error) {
+        console.error(error.message);
+        toast.error('Erro ao carregar os pokémon');
+    }
+}
+
+export async function fetcTypePokemons(dispatch, type) {
+    try {
+        if (type) {
+            const { data } = await Api.get(`/type/${type}`);
+            console.log("data", data);
+            dispatch(fetchPokemonByType(data))
         }
     } catch (error) {
         console.error(error.message);

@@ -1,5 +1,7 @@
-export const PokemonActions = {
+const PokemonActionsTypes = {
     REQUEST: 'pokemons/request',
     SUCCESS: 'pokemons/success',
-    FAILURE: 'pokemons/failure',
+    TYPES: 'pokemons/types',
 }
+
+export default PokemonActionsTypes
