@@ -14,12 +14,15 @@ export const addPokemon = (payload) => ({
     payload
 })
 
-export const showModal = (payload) => ({
-    type: UserActionsTypes.SHOW_MODAL,
-    payload
+export const showPokedex = () => ({
+    type: UserActionsTypes.SHOW_POKEDEX,
 })
 
-export const hideModal = (payload) => ({
-    type: UserActionsTypes.HIDE_MODAL,
+export const hidePokedex = () => ({
+    type: UserActionsTypes.HIDE_POKEDEX,
+})
+
+export const removeFromPokedex = (payload) => ({
+    type: UserActionsTypes.REMOVE_POKEMON,
     payload
 })

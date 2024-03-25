@@ -1,9 +1,10 @@
-import UserActionsTypes from "./actionTypes"
-import { toast } from "react-toastify"
+import UserActionsTypes from "./actionTypes";
+import { toast } from "react-toastify";
+
 const initialState = {
     currentUser: null,
     knownPokemon: [],
-    checkModalOpen: true
+    checkModalOpen: false
 }
 
 const userReducer = (state = initialState, action) => {
@@ -37,6 +38,21 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 knownPokemon: [...state.knownPokemon, action.payload]
+            }
+        case UserActionsTypes.SHOW_POKEDEX:
+            return {
+                ...state,
+                checkModalOpen: true
+            }
+        case UserActionsTypes.HIDE_POKEDEX:
+            return {
+                ...state,
+                checkModalOpen: false
+            }
+        case UserActionsTypes.REMOVE_POKEMON:
+            return {
+                ...state,
+                knownPokemon: state.knownPokemon.filter(pokemon => pokemon.id !== action.payload)
             }
         default:
             return state
