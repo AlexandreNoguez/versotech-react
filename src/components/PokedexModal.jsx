@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
 import { XCircle } from '@phosphor-icons/react'
 
 import { hidePokedex, removeFromPokedex } from '../redux/user/actions';
@@ -15,7 +14,6 @@ PokedexModal.propTypes = {
 
 function PokedexModal({ open, setOpen }) {
     const { knownPokemon } = useSelector(rootReducer => rootReducer.userReducer);
-    console.log("knownPokemon", knownPokemon);
     const cancelButtonRef = useRef(null)
     const dispatch = useDispatch();
 
@@ -72,21 +70,6 @@ function PokedexModal({ open, setOpen }) {
                                                     <p>Nº {pokemon.order}</p>
                                                 </div>
                                             ))}
-                                            {/* <div className="flex text-center flex-col">
-                                                <h1>{`${name.charAt(0).toUpperCase()}${name.substring(1)}`}</h1>
-                                                <p>Já capturou esse pokémon?</p>
-                                                <button onClick={handleAddPokemon}>Adicionar</button>
-                                            </div>
-                                            <img src={knownPokemon.sprites.front_default} alt="" />
-                                          
-                                            <div>
-                                                <p>Tipo:</p>
-                                                {knownPokemon.types.map((type, index) => (
-                                                    <p key={index}>
-                                                        {type.type.name}
-                                                    </p>
-                                                ))}
-                                            </div> */}
                                         </div>
                                     ) :
                                         <div className='flex flex-col gap-2 items-center justify-center'>
