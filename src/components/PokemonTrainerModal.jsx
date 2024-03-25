@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 
 import { loginUser } from '../redux/user/actions';
-// PokemonTrainerModal.Or
 
 PokemonTrainerModal.propTypes = {
     open: PropTypes.bool.isRequired,
