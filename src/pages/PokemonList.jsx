@@ -6,6 +6,7 @@ import { fetchPokemonByName, fetchPokemons } from '../services/pokemons';
 
 import Loading from '../components/Loading'
 import Card from '../components/Card'
+import SearchInput from '../components/SearchInput';
 function PokemonList() {
     const [loading, setLoading] = useState(false);
     const [pokemons, setPokemons] = useState([]);
@@ -86,12 +87,7 @@ function PokemonList() {
                 <div className='flex flex-col justify-center items-center px-4'>
                     <h1 className='mb-4'>Pokemon List</h1>
                     <div className='flex flex-col gap-4 mb-4'>
-                        <input className='bg-zinc-700 px-4 py-2 rounded-lg'
-                            type="text"
-                            placeholder='Buscar...'
-                            value={search}
-                            onChange={e => setSearch(e.target.value)}
-                        />
+                        <SearchInput search={search} setSearch={setSearch} />
                     </div>
                     {
                         loading ? (
