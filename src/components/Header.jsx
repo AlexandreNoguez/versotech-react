@@ -60,25 +60,32 @@ function Header() {
                 ) : (
                     <nav>
                         <ul className='flex gap-4'>
+                                <Link to={"/"}>
                                 <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2'>
                                     {width > 768 ? (
                                         <img className="w-8 h-8" src={pokehouse} alt="" />
                                     ) : null}
-                                <Link to={"/"}>Início</Link>
-                            </li>
+                                        Início
+                                    </li>
+                                </Link>
+                                <Link to={"/pokelist"}>
                                 <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2'>
                                     {width > 768 ? (
 
                                         <img className="flex w-8 h-8" src={Pokeball} alt="" />
                                     ) : null}
-                                <Link to={"/pokelist"}>Pokelist</Link>
-                            </li>
+                                        Pokelist
+                                    </li>
+                                </Link>
+                                <Link to={"/pokelist/types"}>
                                 <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2'>
                                     {width > 768 ? (
 
                                         <img className="flex w-8 h-8" src={Pokeball} alt="" />
-                                    ) : null}                                <Link to={"/pokelist/types"}>Buscar por Tipo</Link>
+                                        ) : null}
+                                        Buscar por Tipo
                                 </li>
+                                </Link>
                         </ul>
                     </nav>
                 )}
