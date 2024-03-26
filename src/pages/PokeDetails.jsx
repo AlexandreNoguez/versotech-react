@@ -37,7 +37,11 @@ function PokeDetails() {
 
     return (
         isLoading
-            ? (<Loading />)
+            ? (
+                <div className="flex justify-center items-center">
+                    <Loading />
+                </div>
+            )
             : (pokemonDetails ?
                 <div className="flex flex-col">
                     <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2">
