@@ -9,6 +9,8 @@ import MenuModal from './MenuModal';
 import PokemonTrainerModal from './PokemonTrainerModal';
 import { logoutUser } from '../redux/user/actions';
 
+import pokehouse from "../assets/house.png"
+
 function Header() {
     const [open, setOpen] = useState(false);
     const [newTrainerModal, setNewTrainerModal] = useState(true);
@@ -35,13 +37,13 @@ function Header() {
 
             <div className='flex items-center gap-4'>
                 <img className='h-4 w-4' src={Pokeball} alt="Logo Pokeball" />
-                <h1 className='text-sm'>VersoTech {width > 480 ? "- React dev" : null}</h1>
+                <h1 className='text-sm'>VersoTech {width > 768 ? "- React dev" : null}</h1>
             </div>
             <div>
                 {currentUser ? (
                     <div className='flex gap-2'>
-                        <p>Olá, {currentUser}!</p>
-                        <button className='text-xl' onClick={handleLogout}>
+                        <p className='max-w-28  overflow-hidden text-ellipsis whitespace-nowrap'>Olá, {currentUser}!</p>
+                        <button className='text-xl' type={'button'} onClick={handleLogout}>
                             <SignOut size={16} />
                         </button>
                     </div>
@@ -51,19 +53,32 @@ function Header() {
             <div>
                 <MenuModal open={open} setOpen={setOpen} />
 
-                {width < 480 ? (
+                {width < 640 ? (
                     <button className='text-xl' onClick={() => setOpen(!open)}>
                         <List size={32} />
                     </button>
                 ) : (
                     <nav>
                         <ul className='flex gap-4'>
-                            <li>
+                                <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2'>
+                                    {width > 768 ? (
+                                        <img className="w-8 h-8" src={pokehouse} alt="" />
+                                    ) : null}
                                 <Link to={"/"}>Início</Link>
                             </li>
-                            <li>
+                                <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2'>
+                                    {width > 768 ? (
+
+                                        <img className="flex w-8 h-8" src={Pokeball} alt="" />
+                                    ) : null}
                                 <Link to={"/pokelist"}>Pokelist</Link>
                             </li>
+                                <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2'>
+                                    {width > 768 ? (
+
+                                        <img className="flex w-8 h-8" src={Pokeball} alt="" />
+                                    ) : null}                                <Link to={"/pokelist/types"}>Buscar por Tipo</Link>
+                                </li>
                         </ul>
                     </nav>
                 )}
