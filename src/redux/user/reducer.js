@@ -34,7 +34,7 @@ const userReducer = (state = initialState, action) => {
                     ...state
                 }
             }
-
+            toast.success("Adicionado a sua pokédex.")
             return {
                 ...state,
                 knownPokemon: [...state.knownPokemon, action.payload]
