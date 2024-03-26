@@ -30,7 +30,9 @@ function PokemonList() {
     async function searchPokemon() {
         try {
             const pokemon = await fetchPokemonByName(search);
-            setUserPokemonSearch(pokemon.data);
+            if (pokemon) {
+                setUserPokemonSearch(pokemon.data);
+            }
         } catch (error) {
             console.error(error);
         } finally {
@@ -87,7 +89,12 @@ function PokemonList() {
                 <div className='flex flex-col justify-center items-center px-4'>
                     <h1 className='mb-4'>Pokemon List</h1>
                     <div className='flex flex-col gap-4 mb-4'>
-                        <SearchInput search={search} setSearch={setSearch} />
+                        <input className='bg-zinc-700 px-4 py-2 rounded-lg border border-slate-500'
+                            type="text"
+                            placeholder='Buscar...'
+                            value={search}
+                            onChange={e => setSearch(e.target.value)}
+                        />
                     </div>
                     {
                         loading ? (

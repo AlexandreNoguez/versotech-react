@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
 SearchInput.propTypes = {
-    search: PropTypes.string.isRequired,
-    setSearch: PropTypes.func.isRequired
+    search: PropTypes.string,
+    setSearch: PropTypes.func
 };
 
 function SearchInput({ search, setSearch }) {
