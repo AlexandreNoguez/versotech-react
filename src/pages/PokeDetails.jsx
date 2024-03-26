@@ -51,27 +51,30 @@ function PokeDetails() {
                             <button className="bg-slate-500 hover:bg-slate-400 border border-slate-400 rounded-sm" onClick={handleAddPokemon}>Adicionar</button>
                         </div>
                         <img src={pokemonDetails.sprites.front_default} alt="" />
-                        <p>Nº {pokemonDetails.order}</p>
-                        <div>
+                        <div className="flex flex-col md:gap-4 md:flex-row">
+                            <p>Nº {pokemonDetails.order}</p>
                             <p>Tipo:</p>
                             {pokemonDetails.types.map((type, index) => (
-                                <p key={index}>
+                                <span key={type.type.name}>
                                     {type.type.name}
-                                </p>
+                                    {index < pokemonDetails.types.length - 1 && ','}
+                                </span>
                             ))}
                         </div>
                     </div>
-                    <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2">
-                        <p>Habilidades</p>
-                        {pokemonDetails.abilities.map((ability, index) => (
-                            <p key={index}>{ability.ability.name}</p>
-                        ))}
-                    </div>
-                    <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2">
-                        <p>Estatísticas</p>
-                        {pokemonDetails?.stats ?
-                            <PokeCharts stats={stats} />
-                            : null}
+                    <div className="flex flex-col md:flex-row md:justify-center md:gap-4">
+                        <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2 md:p-0 md:mx-0">
+                            <p>Habilidades</p>
+                            {pokemonDetails.abilities.map((ability, index) => (
+                                <p key={index}>{ability.ability.name}</p>
+                            ))}
+                        </div>
+                        <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2 md:p-0 md:mx-0">
+                            <p>Estatísticas</p>
+                            {pokemonDetails?.stats ?
+                                <PokeCharts stats={stats} />
+                                : null}
+                        </div>
                     </div>
                 </div>
                 : null
