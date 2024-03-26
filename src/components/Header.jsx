@@ -61,7 +61,7 @@ function Header() {
                     <nav>
                         <ul className='flex gap-4'>
                                 <Link to={"/"}>
-                                <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2'>
+                                    <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2 border border-slate-400'>
                                     {width > 768 ? (
                                         <img className="w-8 h-8" src={pokehouse} alt="" />
                                     ) : null}
@@ -69,7 +69,7 @@ function Header() {
                                     </li>
                                 </Link>
                                 <Link to={"/pokelist"}>
-                                <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2'>
+                                    <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2 border border-slate-400'>
                                     {width > 768 ? (
 
                                         <img className="flex w-8 h-8" src={Pokeball} alt="" />
@@ -78,7 +78,7 @@ function Header() {
                                     </li>
                                 </Link>
                                 <Link to={"/pokelist/types"}>
-                                <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2'>
+                                    <li className='flex items-center justify-center bg-slate-500 hover:bg-slate-400 transition-all rounded-lg px-2 py-2 border border-slate-400'>
                                     {width > 768 ? (
 
                                         <img className="flex w-8 h-8" src={Pokeball} alt="" />
