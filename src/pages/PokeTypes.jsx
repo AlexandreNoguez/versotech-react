@@ -28,7 +28,7 @@ function PokeTypes() {
             <h1 className='mb-4'>Pokemon List</h1>
             <div className='flex flex-col gap-4 mb-4'>
                 <SearchInput search={search} setSearch={setSearch} />
-                <select value={selectType} onChange={(e) => setSelectType(e.target.value)} className='bg-zinc-700 px-4 py-2 rounded-lg'>
+                <select value={selectType} onChange={(e) => setSelectType(e.target.value)} className='bg-zinc-700 px-4 py-2 rounded-lg border border-slate-500'>
                     <option hidden>Selecione</option>
                     <option value={"normal"}>Normal</option>
                     <option value={"fighting"}>Lutador</option>
