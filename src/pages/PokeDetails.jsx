@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from 'react-redux'
-import { toast } from 'react-toastify'
 
 import { fetchPokemonByName } from '../services/pokemons'
 import Loading from "../components/Loading";
