@@ -6,7 +6,7 @@ import { fetchPokemonByName, fetchPokemons } from '../services/pokemons';
 
 import Loading from '../components/Loading'
 import Card from '../components/Card'
-import SearchInput from '../components/SearchInput';
+
 function PokemonList() {
     const [loading, setLoading] = useState(false);
     const [pokemons, setPokemons] = useState([]);
