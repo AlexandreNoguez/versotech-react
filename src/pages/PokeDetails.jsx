@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 
 import { fetchPokemonByName } from '../services/pokemons'
 import Loading from "../components/Loading";
@@ -27,7 +28,7 @@ function PokeDetails() {
     }
 
     function handleAddPokemon() {
-        dispatch(addPokemon(pokemonDetails))
+        dispatch(addPokemon(pokemonDetails));
     }
 
     useEffect(() => {
@@ -48,7 +49,7 @@ function PokeDetails() {
                         <div className="flex text-center flex-col">
                             <h1>{`${name.charAt(0).toUpperCase()}${name.substring(1)}`}</h1>
                             <p>Já capturou esse pokémon?</p>
-                            <button onClick={handleAddPokemon}>Adicionar</button>
+                            <button className="bg-slate-500 hover:bg-slate-400 border border-slate-400 rounded-sm" onClick={handleAddPokemon}>Adicionar</button>
                         </div>
                         <img src={pokemonDetails.sprites.front_default} alt="" />
                         <p>Nº {pokemonDetails.order}</p>
