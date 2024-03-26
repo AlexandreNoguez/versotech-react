@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from "react-router-dom"
 import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+
 import pokeball from "../assets/pokeball.png"
 import pokehouse from "../assets/house.png"
 
@@ -55,6 +56,12 @@ function MenuModal({ open, setOpen }) {
                                                     <Link onClick={() => setOpen(!open)} to="/pokelist" className='flex items-center gap-4 hover:text-brand-300 transition-all'>
                                                         <img className="w-8 h-8" src={pokeball} alt="" />
                                                         Pokélist
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link onClick={() => setOpen(!open)} to="/pokelist/types" className='flex items-center gap-4 hover:text-brand-300 transition-all'>
+                                                        <img className="w-8 h-8" src={pokeball} alt="" />
+                                                        Buscar
                                                     </Link>
                                                 </li>
                                             </ul>
