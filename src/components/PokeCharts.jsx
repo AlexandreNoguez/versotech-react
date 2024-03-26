@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import ReactApexChart from "react-apexcharts";
 
 PokeCharts.propTypes = {
-    stats: PropTypes.object
+    stats: PropTypes.array
 };
 
 function PokeCharts({ stats: series }) {
