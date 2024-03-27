@@ -56,3 +56,7 @@ npm install
 npm run dev
 ```
 5. Quando terminar de executar todos os comandos, o projeto pode ser acessado no navegador <a href="http://localhost:5173">localhost</a>
+
+### Notas
+- É necessário ter o nodejs 18+ instalado para executar o projeto localmente
+- Temporariamente o projeto pode ser acessado em meu domínio <a href="https://alexandrenoguez.dev.br/">alexandrenoguez</a>
