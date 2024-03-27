@@ -6,6 +6,7 @@ import { fetchPokemonByName } from '../services/pokemons'
 import Loading from "../components/Loading";
 import PokeCharts from "../components/PokeCharts";
 import { addPokemon } from "../redux/user/actions";
+import { Slide } from "react-awesome-reveal";
 
 function PokeDetails() {
     const { name } = useParams();
@@ -44,6 +45,7 @@ function PokeDetails() {
             )
             : (pokemonDetails ?
                 <div className="flex flex-col">
+
                     <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2">
                         <div className="flex text-center flex-col">
                             <h1>{`${name.charAt(0).toUpperCase()}${name.substring(1)}`}</h1>
@@ -63,18 +65,22 @@ function PokeDetails() {
                         </div>
                     </div>
                     <div className="flex flex-col md:flex-row md:justify-center md:gap-4">
-                        <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2 md:p-0 md:mx-0">
-                            <p>Habilidades</p>
-                            {pokemonDetails.abilities.map((ability, index) => (
-                                <p key={index}>{ability.ability.name}</p>
-                            ))}
-                        </div>
-                        <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2 md:p-0 md:mx-0">
-                            <p>Estatísticas</p>
-                            {pokemonDetails?.stats ?
-                                <PokeCharts stats={stats} />
-                                : null}
-                        </div>
+                        <Slide className="flex flex-col md:flex-row md:justify-center md:gap-4">
+                            <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2 md:p-0 md:mx-0">
+                                <p>Habilidades</p>
+                                {pokemonDetails.abilities.map((ability, index) => (
+                                    <p key={index}>{ability.ability.name}</p>
+                                ))}
+                            </div>
+                        </Slide>
+                        <Slide direction="right" className="flex flex-col md:flex-row md:justify-center md:gap-4">
+                            <div className="flex flex-col gap-2 mb-4 w-[300px] mx-auto justify-center items-center bg-slate-500 rounded-lg py-2 md:p-0 md:mx-0">
+                                <p>Estatísticas</p>
+                                {pokemonDetails?.stats ?
+                                    <PokeCharts stats={stats} />
+                                    : null}
+                            </div>
+                        </Slide>
                     </div>
                 </div>
                 : null
