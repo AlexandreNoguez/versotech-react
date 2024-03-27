@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SkipBack, SkipForward } from '@phosphor-icons/react'
 import { toast } from 'react-toastify'
+import useWindowSize from '../hooks/SizeObserver'
 
 import { fetchPokemonByName, fetchPokemons } from '../services/pokemons';
 
@@ -12,8 +13,9 @@ function PokemonList() {
     const [pokemons, setPokemons] = useState([]);
     const [userPokemonSeach, setUserPokemonSearch] = useState(null);
     const [offSet, setOffSet] = useState(0);
-    const limit = 12;
     const [search, setSearch] = useState("");
+    const { width } = useWindowSize();
+    const [limit, setLimit] = useState(12);
 
     async function fetchData() {
         try {
@@ -71,6 +73,14 @@ function PokemonList() {
         // eslint-disable-next-line
     }, [search]);
 
+    useEffect(() => {
+        if (width < 480) {
+            setLimit(12);
+        } else {
+            setLimit(36);
+        }
+
+    }, [width]);
 
 
     function previousPage() {
