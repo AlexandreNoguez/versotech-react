@@ -7,6 +7,7 @@ import { fetchPokemonByName, fetchPokemons } from '../services/pokemons';
 
 import Loading from '../components/Loading'
 import Card from '../components/Card'
+import { Fade } from 'react-awesome-reveal';
 
 function PokemonList() {
     const [loading, setLoading] = useState(false);
@@ -111,14 +112,15 @@ function PokemonList() {
                             <Loading />
                         ) :
                             <>
-                                <ul className='flex flex-wrap justify-center text-center gap-4 mb-20'>
-                                    {
-                                        userPokemonSeach ? (
-                                            <Card pokemons={userPokemonSeach} />
-                                        ) : null}
+                                <Fade>
+                                    <ul className='flex flex-wrap justify-center text-center gap-4 mb-20'>
+                                        {
+                                            userPokemonSeach ? (
+                                                <Card pokemons={userPokemonSeach} />
+                                            ) : null}
 
-                                </ul>
-
+                                    </ul>
+                                </Fade>
                             </>
                     }
                 </div >
@@ -138,25 +140,27 @@ function PokemonList() {
                         <Loading />
                     ) :
                         <>
-                            <ul className='flex flex-wrap justify-center text-center gap-4 mb-20'>
-                                {
-                                    pokemons ? (
-                                        <Card pokemons={pokemons} />
-                                    ) : null}
+                            <Fade>
+                                <ul className='flex flex-wrap justify-center text-center gap-4 mb-20'>
+                                    {
+                                        pokemons ? (
+                                            <Card pokemons={pokemons} />
+                                        ) : null}
 
-                            </ul>
-                            <div className='flex gap-8 fixed justify-center items-center bottom-4'>
-                                <button
-                                    onClick={previousPage}
-                                    className={`${offSet === 0 ? "bg-slate-400" : "bg-slate-800"} rounded-lg px-4 py-2`}
-                                    disabled={offSet === 0}
-                                >
-                                    <SkipBack size={32} />
-                                </button>
-                                <button onClick={nextPage} className='bg-slate-800 rounded-lg px-4 py-2'>
-                                    <SkipForward size={32} />
-                                </button>
-                            </div>
+                                </ul>
+                                <div className='flex gap-8 fixed justify-center items-center bottom-4'>
+                                    <button
+                                        onClick={previousPage}
+                                        className={`${offSet === 0 ? "bg-slate-400" : "bg-slate-800"} rounded-lg px-4 py-2`}
+                                        disabled={offSet === 0}
+                                    >
+                                        <SkipBack size={32} />
+                                    </button>
+                                    <button onClick={nextPage} className='bg-slate-800 rounded-lg px-4 py-2'>
+                                        <SkipForward size={32} />
+                                    </button>
+                                </div>
+                            </Fade>
                         </>
                 }
             </div >
